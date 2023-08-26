@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { SearchParamTypes } from "@/types/SearchParamTypes"
 import formatPrice from "@/util/PriceFormat"
+import AddCart from "./AddCart"
 
 export default async function Product({searchParams}: SearchParamTypes){
   return(
@@ -14,7 +15,7 @@ export default async function Product({searchParams}: SearchParamTypes){
       <p>{searchParams.artist}</p>
       <p>{searchParams.description}</p>
       <p>{searchParams.features}</p>
-      <button className="py-2 px-4 bg-teal-700 text-white mt-3">Add to cart</button>
+      <AddCart {...searchParams} />
     </div>
   </article>
   )
