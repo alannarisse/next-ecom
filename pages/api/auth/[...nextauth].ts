@@ -12,7 +12,7 @@ export const authOptions:NextAuthOptions = {
     GoogleProvider({
       // the red underline is just typescript saying are you sure you want this undefined and not a string? which is fine. you can add 'as string' to tell typescript to leave you alone.
       clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_SECRET as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
   ],
   events: {

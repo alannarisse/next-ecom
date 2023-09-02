@@ -45,7 +45,13 @@ Prisma
 Next Auth
 state and persistence with zustand
 Railway database
+Prisma ORM
 Tailwind
 Framer Motion
 
-
+# Running Locally
+to run locally, 
+- create database on railway.app
+- change example.env to .env and example.env.local to .env.local and add correct values
+- run: npx prisma migrate dev
+- run: npm run dev
