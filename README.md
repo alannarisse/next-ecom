@@ -44,5 +44,8 @@ Chapter 5 from full stack react on his website class in teachable
 Prisma
 Next Auth
 state and persistence with zustand
+Railway database
+Tailwind
+Framer Motion
 
-npm install @next-auth/prisma-adapter
+

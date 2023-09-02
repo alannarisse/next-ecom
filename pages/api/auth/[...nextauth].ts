@@ -1,4 +1,4 @@
-import NextAuth from "next-auth"
+import NextAuth, {NextAuthOptions} from "next-auth"
 // import Providers from "next-auth/providers"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { PrismaClient } from "@prisma/client"
@@ -7,7 +7,7 @@ import Stripe from 'stripe'
 
 const prisma = new PrismaClient()
 
-export const authOptions = {
+export const authOptions:NextAuthOptions = {
   providers: [
     GoogleProvider({
       // the red underline is just typescript saying are you sure you want this undefined and not a string? which is fine. you can add 'as string' to tell typescript to leave you alone.
@@ -23,8 +23,8 @@ export const authOptions = {
       // create a stripe customer
       if(user.email && user.name){
       const customer = await stripe.customers.create({
-        email: user.email,
-        name: user.name
+        email: user.email || undefined,
+        name: user.name || undefined,
       })
       // also update our prisma user
       await prisma.user.update({
@@ -32,9 +32,17 @@ export const authOptions = {
         data: {stripeCustomerId: customer.id},
       })
       }
-    }
+    },
+    
   },
+  callbacks: {
+      async session({session, token, user}){
+        session.user = user
+        return session
+      }
+    },
   adapter: PrismaAdapter(prisma),
+  secret: process.env.NEXTAUTH_SECRET
 }
 
 export default NextAuth(authOptions)

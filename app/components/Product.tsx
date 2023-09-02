@@ -2,9 +2,11 @@ import Image from "next/image"
 import formatPrice from "@/util/PriceFormat"
 import { ProductType } from "@/types/ProductType"
 import Link from "next/link"
+import { Playfair_Display, Lato } from 'next/font/google'
 
 export default function Product({name,image,unit_amount,id,description,metadata}: ProductType){
   const { features, artist } = metadata
+
   return(
     <Link href={{pathname: `/product/${id}`, query: {name,image,unit_amount,id,description,features,artist}}}><div className="shadow-lg m-4 p-2 bg-white text-gray-700">
       <Image src={image} alt={name} width={350} height={350}/>

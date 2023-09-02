@@ -18,6 +18,7 @@ model User {
   accounts              Account[]
   sessions              Session[]
   stripeCustomerId      String?
+  orders                Order[]
   @@map("users")
 }
 model Account {
@@ -38,6 +39,28 @@ model Account {
 
   @@unique([provider, providerAccountId])
   @@map("accounts")
+}
+
+model Order{
+  id  String  @id @default(cuid())
+  user  User  @relation(fields: [userId], references: [id])
+  userId  String
+  amount  Float
+  currency String
+  status  String
+  createdDate DateTime @default(now())
+  paymentIntentID String? @unique
+  products  Product[]
+}
+
+model Product {
+  id  String@id @default(cuid())
+  name  String
+  description String?
+  unit_amount Float
+  image String?
+  quantity  Float @default(0)
+  orders  Order[]
 }
 
 model Session {
