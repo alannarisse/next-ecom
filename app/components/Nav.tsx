@@ -1,7 +1,7 @@
 'use client'
 
 import { Session } from 'next-auth'
-import { signIn } from 'next-auth/react'
+import { signIn, signOut } from 'next-auth/react'
 import Image from "next/image"
 import Link from 'next/link'
 import Cart from './Cart'
@@ -41,17 +41,22 @@ export default function Nav({ user }: Session){
         )}
         {user && (
           <>
-          <Link href={'/dashboard'}>
             <li className="flex items-center gap-1">
-            
-            <Image 
+            <details className="dropdown dropdown-end cursor-pointer">
+            <summary className="flex items-center gap-1"><Image tabIndex={0}
           src={user?.image as string} 
           alt={user?.name as string} 
           width={48} 
           height={48}
-          className="rounded-full"/> <span className="text-xs">{user?.name as string}</span>
+          className="rounded-full"/> <span className="text-xs">{user?.name as string}</span></summary>
+          <ul tabIndex={0} className="dropdown-content menu p-4 space-y-4 shadow-lg border-2 bg-base-100 w-62 rounded-box">
+            <li><Link href={'/dashboard'}>Orders</Link></li>
+            <li 
+            onClick={() => {signOut()}}
+            className="hover:bg-base-300 rounded-md p-1">Sign Out</li>
+          </ul>
+          </details>
           </li>
-          </Link>
           </>
         )}
       </ul>
