@@ -28,7 +28,7 @@ export default function Nav({ user }: Session){
           animate={{scale:1}} 
           initial={{scale:0}} 
           exit={{scale:0}}
-          className="bg-teal-700 text-white text-sm font-bold w-5 h-5 rounded-full absolute left-4 bottom-4 flex items-center justify-center">
+          className="bg-primary text-sm font-bold w-5 h-5 rounded-full absolute left-4 bottom-4 flex items-center justify-center">
             {cartStore.cart.length}
           </motion.span>
           )}
@@ -36,17 +36,22 @@ export default function Nav({ user }: Session){
         </li>
         {/*if there's no user, render a sign in button using next auth's signIn method*/}
         {!user && (
-          <li><button onClick={() => window.open("google.com", "_blank")} className="bg-teal-600 text-white rounded-md py-2 px-4" >Sign In</button></li>
+          <li><button  onClick={() => signIn()} className="bg-primary rounded-md py-2 px-4" >Sign In</button></li>
 
         )}
         {user && (
           <>
-          <li className="flex items-center gap-1"><Image 
+          <Link href={'/dashboard'}>
+            <li className="flex items-center gap-1">
+            
+            <Image 
           src={user?.image as string} 
           alt={user?.name as string} 
           width={48} 
           height={48}
-          className="rounded-full"/> <span className="text-xs">{user?.name as string}</span></li>
+          className="rounded-full"/> <span className="text-xs">{user?.name as string}</span>
+          </li>
+          </Link>
           </>
         )}
       </ul>

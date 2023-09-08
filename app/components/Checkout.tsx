@@ -6,8 +6,11 @@ import {useCartStore} from '@/store'
 import {useState, useEffect} from 'react'
 import {useRouter} from 'next/navigation'
 import CheckOutForm from './CheckOutForm'
+import OrderAnimation from './OrderAnimation'
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
+  )
 // gotta prefix with next stuff if its a client component
 
 export default function Checkout(){
@@ -39,7 +42,7 @@ export default function Checkout(){
   const options: StripeElementsOptions = {
     clientSecret,
     appearance: {
-      theme: 'stripe',
+      theme: 'flat',
       labels: 'floating',
     },
   }
@@ -47,7 +50,8 @@ export default function Checkout(){
   //stripe docs payment elements for more
   return (
     <div>
-      {!clientSecret && (
+      {!clientSecret && <OrderAnimation />}
+      {clientSecret && (
         <div>
           <Elements options={options} stripe={stripePromise}>
             <CheckOutForm clientSecret={clientSecret}/>

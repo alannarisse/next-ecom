@@ -53,8 +53,10 @@ export default function CheckOutForm({
   return(
     <form onSubmit={handleSubmit} id='payment-form'>
       <PaymentElement id="payment-element" options={{layout:'tabs'}} />
-      <h1>Total: {formattedPrice}</h1>
-      <button id="submit" disabled={isLoading || !stripe || !elements}>
+      <h1 className="mt-4 font-bold">Total: {formattedPrice}</h1>
+      <button 
+      className="btn-primary btn mt-4 py-2 px-4"
+      id="submit" disabled={isLoading || !stripe || !elements}>
         <span id="button-text">
           {isLoading ? <span>Processing...</span> : <span>Pay Now</span>}
         </span>

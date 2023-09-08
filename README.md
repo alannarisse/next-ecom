@@ -55,3 +55,11 @@ to run locally,
 - change example.env to .env and example.env.local to .env.local and add correct values
 - run: npx prisma migrate dev
 - run: npm run dev
+
+# Local payment testing with Stripe
+cc: 4242 4242 4242 4242
+ex: 04/24
+cvc: 424
+pc: 42424
+
+stripe listen --forward-to localhost:3000/api/webhook

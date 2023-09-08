@@ -25,7 +25,7 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions)
   console.log(session)
   return (
-    <html className={`${lato.className} ${playfair.className}`}>
+    <html className={`${lato.className} ${playfair.className}`} data-theme='light'>
       <body className='mx-1 md:mx-16'>
       <Hydrate>
         <Nav user={session?.user} expires={session?.expires as string}/>

@@ -27,7 +27,7 @@ const getProducts = async() => {
 export default async function Home() {
   const products = await getProducts()
   return (
-    <main className="grid grid-cols-fluid bg-orange-100">
+    <main className="grid grid-cols-fluid">
       {products.map(product => <Product {...product} key={product.id} />)}
       
     </main>

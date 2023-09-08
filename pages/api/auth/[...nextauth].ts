@@ -1,8 +1,8 @@
 import NextAuth, {NextAuthOptions} from "next-auth"
-// import Providers from "next-auth/providers"
+//import Providers from "next-auth/providers"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { PrismaClient } from "@prisma/client"
-import GoogleProvider from "next-auth/providers/google";
+import GoogleProvider from "next-auth/providers/google"
 import Stripe from 'stripe'
 
 const prisma = new PrismaClient()

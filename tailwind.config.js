@@ -15,9 +15,12 @@ module.exports = {
         accentlight: '#D0C2B0',
       },
       gridTemplateColumns: {
-        fluid: "repeat(auto-fit,minmax(15rem, 1fr))",
+        fluid: "repeat(auto-fit,minmax(20rem, 1fr))",
       },
     },
   },
-  plugins: [],
+  plugins: [require('daisyui')],
+  daisyui: {
+    themes: ['light', 'dark'],
+  },
 }
