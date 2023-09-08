@@ -1,9 +1,11 @@
 'use client'
 
+import { useThemeStore } from '@/store'
 import {ReactNode, useEffect, useState} from 'react'
 
 export default function Hydrate({ children }: { children: ReactNode }) {
   const [isHydrated, setIsHydrated] = useState(false)
+  const themeStore = useThemeStore()
 
   // wait til nextjs rehidration completes
   useEffect(() => {
@@ -11,7 +13,7 @@ export default function Hydrate({ children }: { children: ReactNode }) {
   }, [])
   return (
     <>
-    {isHydrated ? <>{children}</> : <div>Loading...</div>}
+    {isHydrated ? <body className="px-4" data-theme={themeStore.mode}>{children}</body> : <body><h1>Loading...</h1></body>}
     </>
   )
 }

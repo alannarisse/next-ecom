@@ -25,13 +25,12 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions)
   console.log(session)
   return (
-    <html className={`${lato.className} ${playfair.className}`} data-theme='light'>
-      <body className='mx-1 md:mx-16'>
+    <html className={`${lato.className} ${playfair.className}`}  >
       <Hydrate>
+      
         <Nav user={session?.user} expires={session?.expires as string}/>
         {children}
       </Hydrate>
-      </body>
       </html>
   )
 }

@@ -23,8 +23,8 @@ export default function Cart() {
     initial={{opacity:0}}
     animate={{opacity:1}}
     exit={{opacity:0}}
-    onClick={() => cartStore.toggleCart()} className="fixed left-0 top-0 w-full h-screen bg-black/25">
-      <motion.div layout onClick={(e) => e.stopPropagation()}className="bg-white absolute right-0 top-o w-full lg:w-1/3 h-screen p-12 overflow-y-scroll text-gray-700">
+    onClick={() => cartStore.toggleCart()} className="fixed left-0 top-0 w-full h-screen bg-base-300">
+      <motion.div layout onClick={(e) => e.stopPropagation()}className="bg-base-100 absolute right-0 top-o w-full lg:w-1/3 h-screen p-12 overflow-y-scroll">
         {cartStore.onCheckout === 'cart' && (
         <div onClick={() => cartStore.toggleCart()} className="absolute top-2 right-1"><IoCloseSharp /></div>
         )}

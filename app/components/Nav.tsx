@@ -9,6 +9,7 @@ import { useCartStore } from '@/store'
 import {AiFillShopping} from 'react-icons/ai'
 import { Playfair_Display } from 'next/font/google'
 import {motion, AnimatePresence} from 'framer-motion'
+import DarkLight from './DarkLight'
 
 const playfair = Playfair_Display({weight: ['900','700'], subsets:['latin']})
 
@@ -17,7 +18,7 @@ export default function Nav({ user }: Session){
   return (
     <nav className="flex justify-between items-center py-8">
       <h1><Link className={playfair.className}href={'/'}>VergePDX Shop</Link></h1>
-      <ul className='flex items-center gap-12 mb-10'>
+      <ul className='flex items-center gap-8 mb-10'>
         <li 
         className="border-black border-x-teal-800 text-3xl relative cursor-pointer"  onClick={() => cartStore.toggleCart()} 
         >
@@ -34,6 +35,7 @@ export default function Nav({ user }: Session){
           )}
           </AnimatePresence>
         </li>
+        <li><DarkLight/></li>
         {/*if there's no user, render a sign in button using next auth's signIn method*/}
         {!user && (
           <li><button  onClick={() => signIn()} className="bg-primary rounded-md py-2 px-4" >Sign In</button></li>
@@ -42,20 +44,27 @@ export default function Nav({ user }: Session){
         {user && (
           <>
             <li className="flex items-center gap-1">
-            <details className="dropdown dropdown-end cursor-pointer">
-            <summary className="flex items-center gap-1"><Image tabIndex={0}
+            <div className="dropdown dropdown-bottom cursor-pointer">
+            <label className="flex items-center gap-1"><Image tabIndex={0}
           src={user?.image as string} 
           alt={user?.name as string} 
           width={48} 
           height={48}
-          className="rounded-full"/> <span className="text-xs">{user?.name as string}</span></summary>
+          className="rounded-full"/> <span className="text-xs">{user?.name as string}</span></label>
           <ul tabIndex={0} className="dropdown-content menu p-4 space-y-4 shadow-lg border-2 bg-base-100 w-62 rounded-box">
             <li><Link href={'/dashboard'}>Orders</Link></li>
             <li 
-            onClick={() => {signOut()}}
+            onClick={() => {
+              if(document.activeElement instanceof HTMLElement){
+                document.activeElement.blur()
+              }
+              signOut()
+            }
+            
+            }
             className="hover:bg-base-300 rounded-md p-1">Sign Out</li>
           </ul>
-          </details>
+          </div>
           </li>
           </>
         )}

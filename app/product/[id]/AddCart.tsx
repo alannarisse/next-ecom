@@ -14,7 +14,7 @@ export default function AddCart({name,id,image,unit_amount,quantity}: AddCartTyp
     setTimeout(() => {
       setAdded(false)
   }, 500)
-
+  }
   return(
     <>
     <button 

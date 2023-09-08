@@ -5,6 +5,7 @@ import {PaymentElement, useStripe, useElements} from '@stripe/react-stripe-js'
 import { useCartStore } from '@/store'
 import formatPrice from '@/util/PriceFormat'
 
+
 export default function CheckOutForm({
   clientSecret,
 }: {
@@ -13,6 +14,7 @@ export default function CheckOutForm({
   const stripe = useStripe()
   const elements = useElements()
   const [isLoading, setIsLoading] = useState(false)
+
 
   const cartStore = useCartStore()
 
