@@ -17,6 +17,10 @@ module.exports = {
       gridTemplateColumns: {
         fluid: "repeat(auto-fit,minmax(20rem, 1fr))",
       },
+      fontFamily: {
+        lato: ['var(--font-lato)'],
+        playfair: ['var(--font-playfair)']
+      },
     },
   },
   plugins: [require('daisyui')],

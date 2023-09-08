@@ -42,7 +42,7 @@ export default async function Dashboard(){
                 <div className="py-2 bg-base-200" key={product.id}>
                   <h2>{product.name}</h2>
                   <div>
-                    <Image src={product.image!} width={36} height={36} alt={product.name}/>
+                    <Image src={product.image!} width={36} height={36} alt={product.name} priority={true}/>
                     <p>Price: {formatPrice(product.unit_amount)}</p>
                     <p>Quantity: {product.quantity}</p>
                   </div>

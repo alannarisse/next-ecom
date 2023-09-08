@@ -5,11 +5,12 @@ import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import Hydrate from './components/Hydrate'
 import { Playfair_Display, Lato } from 'next/font/google'
 
-const playfair = Playfair_Display({weight: ['900','700'], subsets:['latin']})
+const playfair = Playfair_Display({weight: ['900','700'], subsets:['latin'], variable: '--font-playfair'})
 const lato = Lato({
   subsets:['latin'], 
   display:'swap',
   weight: ['400','700'],
+  variable: '--font-lato'
 })
 
 export const metadata = {
@@ -25,7 +26,7 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions)
   console.log(session)
   return (
-    <html className={`${lato.className} ${playfair.className}`}  >
+    <html className={`${lato.variable} ${playfair.variable}`}  >
       <Hydrate>
       
         <Nav user={session?.user} expires={session?.expires as string}/>

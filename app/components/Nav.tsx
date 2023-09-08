@@ -17,7 +17,7 @@ export default function Nav({ user }: Session){
   const cartStore = useCartStore()
   return (
     <nav className="flex justify-between items-center py-8">
-      <h1><Link className={playfair.className}href={'/'}>VergePDX Shop</Link></h1>
+      <h1 className='font-playfair text-2xl'><Link className={playfair.className}href={'/'}>VergePDX Shop</Link></h1>
       <ul className='flex items-center gap-8 mb-10'>
         <li 
         className="border-black border-x-teal-800 text-3xl relative cursor-pointer"  onClick={() => cartStore.toggleCart()} 

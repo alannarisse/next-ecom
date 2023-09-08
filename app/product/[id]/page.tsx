@@ -7,7 +7,7 @@ export default async function Product({searchParams}: SearchParamTypes){
   return(
   <article className="grid grid-cols-1 gap-2 lg:grid-cols-2 item-center">
     <div>
-    <Image src={searchParams.image} alt={searchParams.name} width={650} height={650}className="w-full"
+    <Image src={searchParams.image} alt={searchParams.name} width={650} height={650} priority={true} className="w-full"
     />
   </div>
   <div>
