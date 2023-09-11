@@ -30,7 +30,7 @@ export default async function RootLayout({
       <Hydrate>
       
         <Nav user={session?.user} expires={session?.expires as string}/>
-        NOTE! This is only a prototype. These items aren't for sale!
+        NOTE! This is only a prototype. These items aren't currently for sale!
         {children}
       </Hydrate>
       </html>
