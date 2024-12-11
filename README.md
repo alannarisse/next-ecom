@@ -63,3 +63,6 @@ cvc: 424
 pc: 42424
 
 stripe listen --forward-to localhost:3000/api/webhook
+
+# vercel deployment: 
+https://next-ecom-bay.vercel.app/
